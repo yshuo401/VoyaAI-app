@@ -5,7 +5,7 @@
     <view class="subtitle">从城市开始，发现值得去的景点</view>
     <view class="search-box"><text class="search-icon">⌕</text><input value="{{keyword}}" placeholder="搜索城市名称" confirm-type="search" bindinput="onKeywordInput" bindconfirm="search" /><text wx:if="{{keyword}}" class="clear" bindtap="clearKeyword">×</text></view>
   </view>
-  <view class="section-head"><text>热门城市</text><text class="count">{{cities.length}} 个目的地</text></view>
+  <view class="section-head"><text>热门城市</text><text class="count" bindtap="openMe">我的 · {{cities.length}} 个目的地</text></view>
   <view wx:if="{{loading}}" class="state">正在加载城市…</view>
   <view wx:elif="{{error}}" class="state error" bindtap="loadCities">{{error}}，点击重试</view>
   <view wx:elif="{{!cities.length}}" class="state">暂时没有可展示的城市</view>

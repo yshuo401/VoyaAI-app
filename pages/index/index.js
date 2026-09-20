@@ -14,4 +14,5 @@ Page({
   search() { this.loadCities() },
   clearKeyword() { this.setData({ keyword: '' }); this.loadCities() },
   openCity(e) { const city = e.currentTarget.dataset.city; wx.navigateTo({ url: `/pages/attractions/attractions?cityId=${city.id}&cityName=${encodeURIComponent(city.name)}` }) },
+  openMe() { wx.navigateTo({ url: '/pages/me/me' }) },
 })

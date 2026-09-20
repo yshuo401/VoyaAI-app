@@ -3,4 +3,4 @@
   <view class="search"><text>⌕</text><input value="{{keyword}}" placeholder="搜索景点" confirm-type="search" bindinput="onKeywordInput" bindconfirm="loadAttractions" /></view>
   <view wx:if="{{loading}}" class="state">正在加载景点…</view><view wx:elif="{{error}}" class="state error" bindtap="loadAttractions">{{error}}，点击重试</view><view wx:elif="{{!items.length}}" class="state">这个城市暂时没有已上架景点</view>
   <view wx:else class="list"><view class="card" wx:for="{{items}}" wx:key="id" data-id="{{item.id}}" bindtap="openDetail"><image wx:if="{{item.coverImage}}" src="{{item.coverUrl}}" mode="aspectFill" /><view wx:else class="cover placeholder">{{item.name}}</view><view class="body"><view class="name">{{item.name}}</view><view class="meta">{{item.rating}} 分 · {{item.recommendedDuration}} 分钟</view><view class="desc">{{item.description || item.address || '暂无简介'}}</view></view></view></view>
-+</view>
+</view>
