@@ -1,14 +1,31 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/search/search",
+    "pages/cities/cities",
     "pages/attractions/attractions",
     "pages/attraction-detail/attraction-detail",
+    "pages/guides/guides",
+    "pages/trips/trips",
     "pages/me/me"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "VoyaAi 旅行",
-    "navigationBarBackgroundColor": "#ffffff"
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f5f8fb"
+  },
+  "tabBar": {
+    "color": "#9aa6b2",
+    "selectedColor": "#1677ff",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/guides/guides", "text": "攻略" },
+      { "pagePath": "pages/trips/trips", "text": "行程" },
+      { "pagePath": "pages/me/me", "text": "我的" }
+    ]
   },
   "style": "v2",
   "componentFramework": "glass-easel",

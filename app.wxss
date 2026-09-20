@@ -1,10 +1,4 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+page { background: #f5f8fb; color: #1f2d3d; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+button { border: 0; }
+button::after { border: 0; }
+.card-shadow { box-shadow: 0 10rpx 28rpx rgba(31,45,61,.08); }

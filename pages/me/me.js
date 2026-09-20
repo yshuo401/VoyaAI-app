@@ -35,6 +35,7 @@ Page({
     catch (e) { this.setData({ error: e.message || '保存失败' }) }
     finally { this.setData({ saving: false }) }
   },
+  openTrips() { wx.switchTab({ url: '/pages/trips/trips' }) },
   logout() { api.saveToken(''); this.setData({ loggedIn: false, user: null, nickname: '', error: '' }); wx.showToast({ title: '已退出登录', icon: 'none' }) },
   imageUrl(path) { return api.imageUrl(path) }
 })
