@@ -27,9 +27,9 @@ Page({
   openTrips() { wx.switchTab({ url: '/pages/trips/trips' }) },
   openMe() { wx.switchTab({ url: '/pages/me/me' }) },
   openCity(e) { const city = e.currentTarget.dataset.city; wx.navigateTo({ url: `/pages/attractions/attractions?cityId=${city.id}&cityName=${encodeURIComponent(city.name)}` }) },
-  openGuide(e) { wx.switchTab({ url: '/pages/guides/guides' }) },
+  openGuide(e) { const item = this.data.guides.find(x => x.cityId === e.currentTarget.dataset.city); wx.navigateTo({ url: `/pages/guide-detail/guide-detail?title=${encodeURIComponent(item ? item.title : '旅行攻略')}&image=${encodeURIComponent(item ? item.image : '')}` }) },
   onQuick(e) {
     const key = e.currentTarget.dataset.key
-    if (key === 'cities') return this.openCities(); if (key === 'guides') return this.openGuides(); if (key === 'trips') return this.openTrips(); if (key === 'attractions') return this.openCities(); if (key === 'ai') return wx.showToast({ title: 'AI助手即将上线', icon: 'none' }); if (key === 'more' || key === 'hotel' || key === 'food') return wx.showToast({ title: '功能即将上线', icon: 'none' })
+    if (key === 'cities') return this.openCities(); if (key === 'guides') return this.openGuides(); if (key === 'trips') return this.openTrips(); if (key === 'attractions') return this.openCities(); if (key === 'ai') return wx.navigateTo({ url: '/pages/ai/ai' }); if (key === 'hotel') return wx.navigateTo({ url: '/pages/hotels/hotels' }); if (key === 'food') return wx.navigateTo({ url: '/pages/food/food' }); if (key === 'more') return wx.navigateTo({ url: '/pages/more/more' })
   }
 })

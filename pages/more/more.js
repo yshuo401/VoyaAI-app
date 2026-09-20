@@ -1,0 +1,1 @@
+Page({data:{items:[{icon:'◔',title:'联系客服'},{icon:'?',title:'帮助中心'},{icon:'✎',title:'意见反馈'},{icon:'ⓘ',title:'关于我们'},{icon:'▣',title:'清除缓存'}]},back(){wx.navigateBack()},tap(e){wx.showToast({title:e.currentTarget.dataset.item?e.currentTarget.dataset.item.title:'功能即将上线',icon:'none'})}})

@@ -1,0 +1,1 @@
+Page({back(){wx.navigateBack()},send(){wx.showToast({title:'AI接口即将接入',icon:'none'})}})

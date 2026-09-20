@@ -1,0 +1,1 @@
+<view class="page"><view class="top"><text class="back" bindtap="back">‹</text><text class="title">更多</text></view><view class="menu"><view wx:for="{{items}}" wx:key="title" class="item" data-item="{{item}}" bindtap="tap"><text class="icon">{{item.icon}}</text><text>{{item.title}}</text><text class="arrow">›</text></view></view></view>

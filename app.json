@@ -7,7 +7,14 @@
     "pages/attraction-detail/attraction-detail",
     "pages/guides/guides",
     "pages/trips/trips",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/guide-detail/guide-detail",
+    "pages/trip-detail/trip-detail",
+    "pages/ai/ai",
+    "pages/hotels/hotels",
+    "pages/food/food",
+    "pages/messages/messages",
+    "pages/more/more"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -21,10 +28,22 @@
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
     "list": [
-      { "pagePath": "pages/index/index", "text": "首页" },
-      { "pagePath": "pages/guides/guides", "text": "攻略" },
-      { "pagePath": "pages/trips/trips", "text": "行程" },
-      { "pagePath": "pages/me/me", "text": "我的" }
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/guides/guides",
+        "text": "攻略"
+      },
+      {
+        "pagePath": "pages/trips/trips",
+        "text": "行程"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
     ]
   },
   "style": "v2",

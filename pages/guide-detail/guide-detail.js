@@ -1,0 +1,1 @@
+Page({data:{title:'成都3天2晚自由行攻略',image:'/assets/city-chengdu.jpg'},onLoad(o){this.setData({title:o.title||this.data.title,image:o.image?decodeURIComponent(o.image):this.data.image})},back(){wx.navigateBack()}})

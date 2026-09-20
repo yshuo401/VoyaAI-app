@@ -1,0 +1,1 @@
+Page({back(){wx.navigateBack()}})
