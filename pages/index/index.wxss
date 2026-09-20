@@ -1,0 +1,10 @@
+page { background: #f6f8f7; color: #192522; }
+.page { padding-bottom: 48rpx; }
+.hero { padding: 92rpx 40rpx 48rpx; background: linear-gradient(145deg, #d9f2e7, #f6f8f7 76%); }
+.eyebrow { color: #16805c; font-size: 22rpx; letter-spacing: 5rpx; font-weight: 700; }
+.title { margin-top: 18rpx; font-size: 54rpx; line-height: 1.25; font-weight: 700; }
+.subtitle { margin-top: 14rpx; color: #687873; font-size: 26rpx; }
+.search-box { display: flex; align-items: center; margin-top: 42rpx; padding: 0 24rpx; height: 86rpx; border-radius: 18rpx; background: #fff; box-shadow: 0 12rpx 30rpx rgba(25, 65, 49, .08); }
+.search-box input { flex: 1; margin-left: 14rpx; font-size: 27rpx; }.search-icon { color: #16805c; font-size: 42rpx; }.clear { color: #9ba8a4; font-size: 36rpx; }
+.section-head { display: flex; justify-content: space-between; align-items: center; padding: 38rpx 40rpx 24rpx; font-size: 34rpx; font-weight: 700; }.count { color: #8b9994; font-size: 23rpx; font-weight: 400; }
+.city-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24rpx; padding: 0 32rpx; }.city-card { overflow: hidden; background: #fff; border-radius: 20rpx; box-shadow: 0 8rpx 24rpx rgba(25, 65, 49, .06); }.city-image { display: block; width: 100%; height: 220rpx; }.placeholder { display: flex; align-items: center; justify-content: center; color: #16805c; background: #d9f2e7; font-size: 48rpx; font-weight: 700; }.city-info { padding: 20rpx; }.city-name { display: block; font-size: 31rpx; font-weight: 700; }.region { display: block; overflow: hidden; margin-top: 10rpx; color: #87938f; font-size: 21rpx; text-overflow: ellipsis; white-space: nowrap; }.state { padding: 100rpx 40rpx; color: #87938f; text-align: center; font-size: 27rpx; }.error { color: #d05b4e; }

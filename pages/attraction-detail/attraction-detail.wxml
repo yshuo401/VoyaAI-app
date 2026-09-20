@@ -1,0 +1,6 @@
+<view class="page" wx:if="{{detail}}">
+  <view class="back" bindtap="goBack">‹ 返回</view>
+  <swiper class="gallery" indicator-dots="{{detail.images && detail.images.length > 1}}" autoplay circular><swiper-item wx:for="{{gallery}}" wx:key="*this"><image src="{{item}}" mode="aspectFill" /></swiper-item></swiper>
+  <view class="content"><view class="title">{{detail.name}}</view><view class="place">{{detail.countryName}} · {{detail.provinceName}} · {{detail.cityName}}</view><view class="metrics"><view><text class="value">{{detail.rating}}</text><text> / 5 评分</text></view><view><text class="value">{{detail.recommendedDuration}}</text><text> 分钟建议游玩</text></view><view><text class="value">{{detail.ticketPrice}}</text><text> 元门票</text></view></view><view class="block"><view class="label">开放时间</view><view class="text">{{detail.openingHours || '暂无信息'}}</view></view><view class="block"><view class="label">景点地址</view><view class="text">{{detail.address || '暂无信息'}}</view></view><view class="block"><view class="label">景点简介</view><view class="text description">{{detail.description || '暂无简介'}}</view></view></view>
++</view>
+<view wx:elif="{{loading}}" class="state">正在加载景点详情…</view><view wx:else class="state error">{{error || '景点不存在'}}</view>
