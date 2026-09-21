@@ -1,0 +1,9 @@
+<view class="page">
+  <view class="intro">你的意见能帮助我们做得更好，我们会认真阅读每一条反馈。</view>
+  <view class="card">
+    <textarea class="content" value="{{content}}" maxlength="1000" placeholder="请描述你遇到的问题或建议..." bindinput="onContent" />
+    <view class="count">{{content.length}}/1000</view>
+    <input class="contact" value="{{contact}}" maxlength="100" placeholder="联系方式（手机号或邮箱，选填）" bindinput="onContact" />
+  </view>
+  <button class="submit" loading="{{submitting}}" bindtap="submit">提交反馈</button>
+</view>

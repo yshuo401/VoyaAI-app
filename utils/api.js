@@ -15,6 +15,7 @@ function request(path, options = {}) {
 function get(path, data, options = {}) { return request(path, { ...options, data, method: 'GET' }) }
 function post(path, data, options = {}) { return request(path, { ...options, data, method: 'POST' }) }
 function put(path, data, options = {}) { return request(path, { ...options, data, method: 'PUT' }) }
+function del(path, options = {}) { return request(path, { ...options, method: 'DELETE' }) }
 function imageUrl(path) { if (!path || /^https?:\/\//.test(path)) return path; return `${app.globalData.apiBaseUrl}${path}` }
 function saveToken(token) { app.globalData.appToken = token || ''; if (token) wx.setStorageSync('voyaai_app_token', token); else wx.removeStorageSync('voyaai_app_token') }
 function upload(path, filePath) {
@@ -25,4 +26,4 @@ function upload(path, filePath) {
     fail(error) { reject(new Error(error.errMsg || '图片上传失败')) }
   }))
 }
-module.exports = { get, post, put, upload, imageUrl, saveToken }
+module.exports = { get, post, put, del, upload, imageUrl, saveToken }

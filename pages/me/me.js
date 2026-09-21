@@ -1,10 +1,10 @@
 const api = require('../../utils/api')
 Page({
-  data: { loggedIn: false, loading: false, saving: false, user: null, nickname: '', error: '' },
+  data: { loggedIn: false, loading: false, saving: false, user: null, nickname: '', error: '', stats: { trips: 0, favorites: 0, history: 0 } },
   onShow() { this.loadProfile() },
   async loadProfile() {
     if (!getApp().globalData.appToken) { this.setData({ loggedIn: false, user: null }); return }
-    try { const user = await api.get('/app/voyaai/me', {}, { auth: true }); this.setData({ loggedIn: true, user, nickname: user.nickname || '', error: '' }) }
+    try { const user = await api.get('/app/voyaai/me', {}, { auth: true }); this.setData({ loggedIn: true, user, nickname: user.nickname || '', error: '' }); this.loadStats() }
     catch { api.saveToken(''); this.setData({ loggedIn: false, user: null, error: '登录已失效，请重新登录' }) }
   },
   login() {
@@ -35,7 +35,20 @@ Page({
     catch (e) { this.setData({ error: e.message || '保存失败' }) }
     finally { this.setData({ saving: false }) }
   },
+  async loadStats() {
+    try {
+      const [trips, favorites, history] = await Promise.all([
+        api.get('/app/voyaai/trips', { pageNum: 1, pageSize: 1 }, { auth: true }).catch(() => ({ total: 0 })),
+        api.get('/app/voyaai/favorites', { pageNum: 1, pageSize: 1 }, { auth: true }).catch(() => ({ total: 0 })),
+        api.get('/app/voyaai/me/view-history', {}, { auth: true }).catch(() => [])
+      ])
+      this.setData({ stats: { trips: trips.total || 0, favorites: favorites.total || 0, history: (history && history.length) || 0 } })
+    } catch (e) {}
+  },
   openTrips() { wx.switchTab({ url: '/pages/trips/trips' }) },
+  openFavorites() { wx.navigateTo({ url: '/pages/favorites/favorites' }) },
+  openHistory() { wx.navigateTo({ url: '/pages/history/history' }) },
+  openFeedback() { wx.navigateTo({ url: '/pages/feedback/feedback' }) },
   logout() { api.saveToken(''); this.setData({ loggedIn: false, user: null, nickname: '', error: '' }); wx.showToast({ title: '已退出登录', icon: 'none' }) },
   imageUrl(path) { return api.imageUrl(path) }
 })

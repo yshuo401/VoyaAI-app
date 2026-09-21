@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="form-card">
+    <view class="field"><view class="label">目的地城市</view><picker range="{{cities}}" range-key="name" value="{{cityIndex}}" bindchange="onCity"><view class="value {{cityIndex < 0 ? 'placeholder' : ''}}">{{cityIndex >= 0 ? cities[cityIndex].name : '请选择城市'}} ▾</view></picker></view>
+    <view class="field"><view class="label">行程标题</view><input class="value" value="{{title}}" maxlength="200" placeholder="例如：成都三日游" bindinput="onTitle" /></view>
+    <view class="field"><view class="label">开始日期</view><picker mode="date" value="{{startDate}}" bindchange="onStart"><view class="value {{!startDate ? 'placeholder' : ''}}">{{startDate || '选择日期'}}</view></picker></view>
+    <view class="field"><view class="label">结束日期</view><picker mode="date" value="{{endDate}}" bindchange="onEnd"><view class="value {{!endDate ? 'placeholder' : ''}}">{{endDate || '选择日期'}}</view></picker></view>
+    <view class="field"><view class="label">出行人数</view><input class="value" type="number" value="{{peopleCount}}" bindinput="onPeople" /></view>
+    <view class="field"><view class="label">预算（元）</view><input class="value" type="digit" value="{{budget}}" placeholder="例如 3000" bindinput="onBudget" /></view>
+    <view class="field"><view class="label">出行方式</view><input class="value" value="{{travelType}}" maxlength="30" placeholder="例如：自由行" bindinput="onTravelType" /></view>
+    <view class="field"><view class="label">行程描述</view><textarea class="value textarea" value="{{description}}" maxlength="1000" placeholder="简单描述这次旅行" bindinput="onDescription" /></view>
+  </view>
+  <button class="save" loading="{{saving}}" bindtap="save">保存行程</button>
+</view>

@@ -14,7 +14,12 @@
     "pages/hotels/hotels",
     "pages/food/food",
     "pages/messages/messages",
-    "pages/more/more"
+    "pages/more/more",
+    "pages/trip-form/trip-form",
+    "pages/favorites/favorites",
+    "pages/history/history",
+    "pages/feedback/feedback",
+    "pages/trip-share/trip-share"
   ],
   "window": {
     "navigationBarTextStyle": "black",

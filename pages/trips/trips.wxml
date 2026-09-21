@@ -1,1 +1,12 @@
-<view class="page"><view class="title-row"><view><view class="kicker">VOYAAI PLAN</view><view class="title">我的行程</view></view><text class="add">＋</text></view><view class="ai-card"><view class="ai-title">让 AI 帮你定制旅行</view><view class="ai-desc">告诉我你的目的地、天数和偏好，为你生成专属行程</view><button bindtap="startPlan">开始规划</button></view><view class="section-head"><text>我的行程</text><text class="muted">{{trips.length}} 个行程</text></view><view wx:if="{{!trips.length}}" class="empty"><view class="empty-icon">✈</view><view>还没有行程</view><view class="empty-sub">创建一份行程，记录你的每一次出发</view><button bindtap="startPlan">创建行程</button></view><view wx:else class="trip-list"><view class="trip" wx:for="{{trips}}" wx:key="id"><image src="{{item.image}}" mode="aspectFill" /><view><view class="trip-title">{{item.title}}</view><view class="trip-date">{{item.date}}</view></view></view></view></view>
+<view class="page">
+  <view class="title-row"><view><view class="kicker">VOYAAI PLAN</view><view class="title">我的行程</view></view><text class="add" bindtap="create">＋</text></view>
+  <view class="ai-card"><view class="ai-title">让 AI 帮你定制旅行</view><view class="ai-desc">告诉我你的目的地、天数和偏好，为你生成专属行程</view><button bindtap="startPlan">开始规划</button></view>
+  <view class="section-head"><text>我的行程</text><text class="muted">{{total}} 个行程</text></view>
+  <view wx:if="{{!loggedIn}}" class="empty"><view class="empty-icon">✈</view><view>登录后查看你的行程</view><view class="empty-sub">记录每一次出发，随时回顾</view><button bindtap="goLogin">去登录</button></view>
+  <view wx:elif="{{loading && !trips.length}}" class="feedback">正在加载...</view>
+  <view wx:elif="{{error}}" class="feedback" bindtap="load(true)">{{error}}，点击重试</view>
+  <view wx:elif="{{!trips.length}}" class="empty"><view class="empty-icon">✈</view><view>还没有行程</view><view class="empty-sub">创建一份行程，记录你的每一次出发</view><button bindtap="create">创建行程</button></view>
+  <view wx:else class="trip-list">
+    <view class="trip" wx:for="{{trips}}" wx:key="id" data-id="{{item.id}}" bindtap="openDetail"><image src="{{item.image}}" mode="aspectFill" /><view class="trip-main"><view class="trip-title">{{item.title}}</view><view class="trip-date">{{item.date}}</view><view class="trip-meta">{{item.cityName}} · {{item.peopleCount}}人 · {{item.dayCount}}天</view></view><text class="trip-arrow">›</text></view>
+  </view>
+</view>

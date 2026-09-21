@@ -1,0 +1,7 @@
+<view class="page">
+  <view wx:if="{{!loggedIn}}" class="empty"><view class="empty-icon">☆</view><view>登录后查看收藏</view><button bindtap="goLogin">去登录</button></view>
+  <view wx:elif="{{loading && !items.length}}" class="state">加载中...</view>
+  <view wx:elif="{{error}}" class="state error">{{error}}，点击重试</view>
+  <view wx:elif="{{!items.length}}" class="empty"><view class="empty-icon">☆</view><view>还没有收藏</view></view>
+  <view wx:else class="list"><view class="card" wx:for="{{items}}" wx:key="id" data-type="{{item.targetType}}" data-id="{{item.targetId}}" data-name="{{item.targetTitle}}" bindtap="open"><image class="cover" src="{{item.cover}}" mode="aspectFill" /><view class="main"><view class="tag">{{item.typeName}}</view><view class="title">{{item.targetTitle || ('目标 ' + item.targetId)}}</view><view class="time">{{item.createTime}}</view></view><text class="remove" data-type="{{item.targetType}}" data-id="{{item.targetId}}" catchtap="remove">取消</text></view></view>
+</view>

@@ -1,6 +1,31 @@
 <view class="page" wx:if="{{detail}}">
   <view class="back" bindtap="goBack">‹ 返回</view>
   <swiper class="gallery" indicator-dots="{{detail.images && detail.images.length > 1}}" autoplay circular><swiper-item wx:for="{{gallery}}" wx:key="*this"><image src="{{item}}" mode="aspectFill" /></swiper-item></swiper>
-  <view class="content"><view class="title">{{detail.name}}</view><view class="place">{{detail.countryName}} · {{detail.provinceName}} · {{detail.cityName}}</view><view class="metrics"><view><text class="value">{{detail.rating}}</text><text> / 5 评分</text></view><view><text class="value">{{detail.recommendedDuration}}</text><text> 分钟建议游玩</text></view><view><text class="value">{{detail.ticketPrice}}</text><text> 元门票</text></view></view><view class="block"><view class="label">开放时间</view><view class="text">{{detail.openingHours || '暂无信息'}}</view></view><view class="block"><view class="label">景点地址</view><view class="text">{{detail.address || '暂无信息'}}</view></view><view class="block"><view class="label">景点简介</view><view class="text description">{{detail.description || '暂无简介'}}</view></view><view class="actions"><button bindtap="favorite">☆ 收藏</button><button class="primary" bindtap="navigate">⌖ 导航</button></view></view>
+  <view class="content">
+    <view class="title">{{detail.name}}</view>
+    <view class="place">{{detail.countryName}} · {{detail.provinceName}} · {{detail.cityName}}</view>
+    <view class="metrics"><view><text class="value">{{detail.rating}}</text><text> / 5 评分</text></view><view><text class="value">{{detail.recommendedDuration}}</text><text> 分钟建议游玩</text></view><view><text class="value">{{detail.ticketPrice}}</text><text> 元门票</text></view></view>
+    <view class="block"><view class="label">开放时间</view><view class="text">{{detail.openingHours || '暂无信息'}}</view></view>
+    <view class="block"><view class="label">景点地址</view><view class="text">{{detail.address || '暂无信息'}}</view></view>
+    <view class="block"><view class="label">景点简介</view><view class="text description">{{detail.description || '暂无简介'}}</view></view>
+    <view class="actions">
+      <button class="{{favorited ? 'active' : ''}}" bindtap="toggleFavorite">{{favorited ? '★ 已收藏' : '☆ 收藏'}}</button>
+      <button class="{{liked ? 'active' : ''}}" bindtap="toggleLike">♥ {{likeCount || '点赞'}}</button>
+      <button class="primary" bindtap="navigate">⌖ 导航</button>
+    </view>
+  </view>
+  <view class="comments">
+    <view class="comments-head">评论 {{commentTotal ? commentTotal : ''}}</view>
+    <view wx:if="{{replyTo}}" class="reply-hint">回复 @{{replyTo.name}} <text bindtap="cancelReply">取消</text></view>
+    <view class="comment-input"><input value="{{commentText}}" maxlength="1000" placeholder="{{replyTo ? '回复 ' + replyTo.name : '说点什么...'}}" bindinput="onCommentInput" confirm-type="send" bindconfirm="submitComment" /><button size="mini" loading="{{submitting}}" bindtap="submitComment">发布</button></view>
+    <view wx:if="{{commentLoading}}" class="comment-state">加载评论中...</view>
+    <view wx:elif="{{!comments.length}}" class="comment-state">还没有评论，来抢沙发吧</view>
+    <view class="comment" wx:for="{{comments}}" wx:key="id">
+      <view class="comment-main">
+        <image class="avatar" src="{{item.avatar}}" mode="aspectFill" /><view class="comment-body"><view class="comment-name">{{item.nickname || '旅行者'}}</view><view class="comment-content">{{item.content}}</view><view class="comment-meta"><text>{{item.createTime}}</text><text class="like {{item.liked ? 'liked' : ''}}" data-id="{{item.id}}" bindtap="toggleCommentLike">♥ {{item.likeCount || 0}}</text><text bindtap="replyTo" data-id="{{item.id}}" data-name="{{item.nickname || '旅行者'}}">回复</text></view></view>
+      </view>
+      <view class="replies" wx:if="{{item.replies.length}}"><view class="reply" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id"><view class="reply-name">{{reply.nickname || '旅行者'}}</view><view class="reply-content">{{reply.content}}</view><view class="reply-meta"><text>{{reply.createTime}}</text><text class="like {{reply.liked ? 'liked' : ''}}" data-id="{{reply.id}}" bindtap="toggleCommentLike">♥ {{reply.likeCount || 0}}</text></view></view></view>
+    </view>
+  </view>
 </view>
 <view wx:elif="{{loading}}" class="state">正在加载景点详情…</view><view wx:else class="state error">{{error || '景点不存在'}}</view>

@@ -1,1 +1,9 @@
-Page({data:{items:[{icon:'◔',title:'联系客服'},{icon:'?',title:'帮助中心'},{icon:'✎',title:'意见反馈'},{icon:'ⓘ',title:'关于我们'},{icon:'▣',title:'清除缓存'}]},back(){wx.navigateBack()},tap(e){wx.showToast({title:e.currentTarget.dataset.item?e.currentTarget.dataset.item.title:'功能即将上线',icon:'none'})}})
+Page({
+  data: { items: [{ icon: '◔', title: '联系客服', key: 'service' }, { icon: '?', title: '帮助中心', key: 'help' }, { icon: '✎', title: '意见反馈', key: 'feedback' }, { icon: 'ⓘ', title: '关于我们', key: 'about' }] },
+  back() { wx.navigateBack() },
+  tap(e) {
+    const item = e.currentTarget.dataset.item
+    if (item && item.key === 'feedback') return wx.navigateTo({ url: '/pages/feedback/feedback' })
+    wx.showToast({ title: item ? item.title + '即将上线' : '功能即将上线', icon: 'none' })
+  }
+})

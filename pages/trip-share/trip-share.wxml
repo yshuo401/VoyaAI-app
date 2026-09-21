@@ -1,0 +1,8 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="state">加载中...</view>
+  <view wx:elif="{{error}}" class="state error">{{error}}</view>
+  <block wx:elif="{{detail}}">
+    <view class="head"><view class="title">{{detail.title}}</view><view class="meta">{{detail.cityName}} · {{detail.startDate || '未设置'}} ~ {{detail.endDate || '未设置'}} · {{detail.peopleCount}}人 · 预算¥{{detail.budget}}</view><view wx:if="{{detail.description}}" class="desc">{{detail.description}}</view></view>
+    <view class="day" wx:for="{{detail.days}}" wx:key="id"><view class="day-title">Day {{item.dayNumber}} <text>{{item.date || ''}}</text></view><view wx:if="{{item.title}}" class="day-name">{{item.title}}</view><view class="item" wx:for="{{item.items}}" wx:for-item="it" wx:key="id"><view class="time">{{it.startTime || '—'}}</view><view class="main"><view class="item-title">{{it.title}}</view><view class="sub">{{itemTypeLabel(it.itemType)}}<text wx:if="{{it.address}}"> · {{it.address}}</text></view></view></view></view>
+  </block>
+</view>
