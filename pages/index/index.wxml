@@ -5,10 +5,10 @@
     <view class="quick-item" wx:for="{{quickItems}}" wx:key="title" data-key="{{item.key}}" bindtap="onQuick"><view class="quick-icon {{item.color}}">{{item.icon}}</view><text>{{item.title}}</text></view>
   </view>
   <view class="section-head"><text class="section-title">热门目的地</text><text class="more" bindtap="openCities">查看更多 ›</text></view>
-  <scroll-view class="city-scroll" scroll-x enable-flex>
-    <view class="city-card" wx:for="{{cities}}" wx:key="id" data-city="{{item}}" bindtap="openCity"><image src="{{item.coverUrl}}" mode="aspectFill" /><view class="city-gradient"></view><text>{{item.name}}</text></view>
+  <view class="city-grid">
+    <view class="city-card" wx:for="{{cities}}" wx:key="id" data-city="{{item}}" bindtap="openCity"><image src="{{item.coverUrl}}" mode="aspectFill" /><view class="city-gradient"></view><view class="city-info"><text class="city-name">{{item.name}}</text><text class="city-desc">{{item.description || '热门目的地'}}</text></view></view>
     <view wx:if="{{!cities.length && !loading}}" class="empty-card">暂无城市</view>
-  </scroll-view>
+  </view>
   <view class="section-head guide-head"><text class="section-title">精选攻略</text><text class="more" bindtap="openGuides">查看更多 ›</text></view>
   <view class="guide-list"><view class="guide-card" wx:for="{{guides}}" wx:key="id" data-id="{{item.id}}" bindtap="openGuide"><image src="{{item.image}}" mode="aspectFill" /><view class="guide-body"><view class="guide-title">{{item.title}}</view><view class="guide-desc">{{item.summary}}</view><view class="guide-meta">◷ {{item.viewCount}} · ♡ {{item.likeCount}} <text>{{item.cityName}}</text></view></view></view></view>
   <view wx:if="{{guideLoading}}" class="loading">正在加载攻略...</view>

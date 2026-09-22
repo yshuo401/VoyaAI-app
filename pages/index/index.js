@@ -17,7 +17,7 @@ Page({
     try {
       const cities = await api.get('/app/voyaai/cities', {})
       const mapped = cities.map(item => ({ ...item, coverUrl: item.coverImage ? api.imageUrl(item.coverImage) : (cityImages[item.name] || '/assets/city-chengdu.jpg') }))
-      this.setData({ cities: mapped })
+      this.setData({ cities: mapped.slice(0, 4) })
     } catch (e) { this.setData({ error: e.message || '目的地加载失败' }) }
     finally { this.setData({ loading: false }) }
   },
